@@ -7,7 +7,8 @@
         "watch-poll": "mix watch -- --watch-options-poll=1000",
         "hot": "mix watch --hot",
         "prod": "npm run production",
-        "production": "mix --production"
+        "production": "mix --production",
+        "test": "php artisan test"
     },
     "devDependencies": {
         "@tailwindcss/forms": "^0.2.1",
@@ -20,4 +21,5 @@
         "postcss-import": "^12.0.1",
         "tailwindcss": "^2.0.2"
     }
+
 }

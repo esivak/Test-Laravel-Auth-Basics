@@ -45,8 +45,8 @@ class AuthenticationTest extends TestCase
     {
         $user = User::factory()->create();
         $response = $this->actingAs($user)->get('/profile');
-        $this->assertStringContainsString('value="'.$user->name.'"', $response->getContent());
-        $this->assertStringContainsString('value="'.$user->email.'"', $response->getContent());
+        $this->assertStringContainsString($user->name, $response->getContent());
+        $this->assertStringContainsString($user->email, $response->getContent());
     }
 
     public function test_profile_name_email_update_successful()
@@ -89,8 +89,8 @@ class AuthenticationTest extends TestCase
         $newData = [
             'name' => 'New name',
             'email' => 'new@email.com',
-            'password' => 'newpassword',
-            'password_confirmation' => 'newpassword'
+            'password' => 'newpasswordA1',
+            'password_confirmation' => 'newpasswordA1'
         ];
         $response = $this->post('/register', $newData);
         $response->assertRedirect('/');
@@ -140,7 +140,7 @@ class AuthenticationTest extends TestCase
         ];
 
         $invalidPassword = '12345678';
-        $validPassword = 'a12345678';
+        $validPassword = 'aA12345678';
 
         $this->post('/register', $user + [
             'password' => $invalidPassword,
